@@ -1,4 +1,4 @@
-package server;
+package com.josephndavis.chattykathy.server;
 
 import java.io.Serializable;
 

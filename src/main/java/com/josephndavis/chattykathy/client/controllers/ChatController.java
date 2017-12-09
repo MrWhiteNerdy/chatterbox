@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import server.Message;
+import com.josephndavis.chattykathy.server.Message;
 
 import java.io.IOException;
 import java.net.URL;

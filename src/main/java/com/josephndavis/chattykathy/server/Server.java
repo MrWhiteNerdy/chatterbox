@@ -1,4 +1,4 @@
-package server;
+package com.josephndavis.chattykathy.server;
 
 import javafx.application.Platform;
 
@@ -90,7 +90,7 @@ public class Server implements Runnable {
 		int pos = findClient(id);
 		if (pos >= 0) {
 			ServerThread toTerminate = clients[pos];
-			ServerMain.getServerController().appendStatusText("Removing com.josephndavis.chattykathy.client: " + id);
+			ServerMain.getServerController().appendStatusText("Removing client: " + id);
 			if (pos < clientCount - 1) {
 				System.arraycopy(clients, pos + 1, clients, pos + 1 - 1, clientCount - (pos + 1));
 			}
@@ -116,26 +116,26 @@ public class Server implements Runnable {
 			if (findUserThread(msg.getFrom()) == null) {
 				if (DBManager.findUser(msg.getFrom(), msg.getContents())) {
 					clients[findClient(id)].setUsername(msg.getFrom());
-					clients[findClient(id)].send(new Message(msg.getFrom(), "server", "login", "true"));
-					announce("newUser", "server", msg.getFrom());
+					clients[findClient(id)].send(new Message(msg.getFrom(), "com/josephndavis/chattykathy/server", "login", "true"));
+					announce("newUser", "com/josephndavis/chattykathy/server", msg.getFrom());
 					sendUserList(msg.getFrom());
 				} else {
-					clients[findClient(id)].send(new Message(msg.getFrom(), "server", "login", "false"));
+					clients[findClient(id)].send(new Message(msg.getFrom(), "com/josephndavis/chattykathy/server", "login", "false"));
 				}
 			} else {
-				clients[findClient(id)].send(new Message(msg.getFrom(), "server", "login", "false"));
+				clients[findClient(id)].send(new Message(msg.getFrom(), "com/josephndavis/chattykathy/server", "login", "false"));
 			}
 		} else if (msg.getType().equals("register")) {
 			if (findUserThread(msg.getFrom()) == null) {
 				if (DBManager.registerUser(msg.getFrom(), msg.getContents())) {
 					clients[findClient(id)].setUsername(msg.getFrom());
-					clients[findClient(id)].send(new Message(msg.getFrom(), "server", "register", "true"));
-					clients[findClient(id)].send(new Message(msg.getFrom(), "server", "login", "true"));
+					clients[findClient(id)].send(new Message(msg.getFrom(), "com/josephndavis/chattykathy/server", "register", "true"));
+					clients[findClient(id)].send(new Message(msg.getFrom(), "com/josephndavis/chattykathy/server", "login", "true"));
 				} else {
-					clients[findClient(id)].send(new Message(msg.getFrom(), "server", "register", "false"));
+					clients[findClient(id)].send(new Message(msg.getFrom(), "com/josephndavis/chattykathy/server", "register", "false"));
 				}
 			} else {
-				clients[findClient(id)].send(new Message(msg.getFrom(), "server", "register", "false"));
+				clients[findClient(id)].send(new Message(msg.getFrom(), "com/josephndavis/chattykathy/server", "register", "false"));
 			}
 		} else if (msg.getType().equals("msg")) {
 			DBManager.insertMessage(msg);
@@ -147,7 +147,7 @@ public class Server implements Runnable {
 			}
 		} else if (msg.getType().equals("logout")) {
 			remove(id);
-			announce("logout", "server", msg.getFrom());
+			announce("logout", "com/josephndavis/chattykathy/server", msg.getFrom());
 		}
 	}
 	
@@ -161,7 +161,7 @@ public class Server implements Runnable {
 	
 	private void sendUserList(String to) {
 		for (int i = 0; i < clientCount; i++) {
-			findUserThread(to).send(new Message(to, "server", "newUser", clients[i].getUsername()));
+			findUserThread(to).send(new Message(to, "com/josephndavis/chattykathy/server", "newUser", clients[i].getUsername()));
 		}
 	}
 	

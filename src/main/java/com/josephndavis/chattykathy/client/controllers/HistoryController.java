@@ -1,7 +1,7 @@
 package com.josephndavis.chattykathy.client.controllers;
 
 import com.josephndavis.chattykathy.client.ClientMain;
-import server.DBManager;
+import com.josephndavis.chattykathy.server.DBManager;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;

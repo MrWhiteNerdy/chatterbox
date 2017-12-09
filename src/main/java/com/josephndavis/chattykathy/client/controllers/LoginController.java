@@ -2,7 +2,7 @@ package com.josephndavis.chattykathy.client.controllers;
 
 import com.josephndavis.chattykathy.client.Client;
 import com.josephndavis.chattykathy.client.ClientMain;
-import server.Message;
+import com.josephndavis.chattykathy.server.Message;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -76,7 +76,7 @@ public class LoginController implements Initializable {
 	    if (loginInfoNotFilledIn()) {
             msg.setText("Username and password cannot be empty");
         } else {
-	    	client.send(new Message("server", usernameFld.getText(), "login", passwordFld.getText()));
+	    	client.send(new Message("com/josephndavis/chattykathy/server", usernameFld.getText(), "login", passwordFld.getText()));
         }
 	}
 	
@@ -84,7 +84,7 @@ public class LoginController implements Initializable {
         if (loginInfoNotFilledIn()) {
             msg.setText("Username and password cannot be empty");
         } else {
-        	client.send(new Message("server", usernameFld.getText(), "register", passwordFld.getText()));
+        	client.send(new Message("com/josephndavis/chattykathy/server", usernameFld.getText(), "register", passwordFld.getText()));
         }
 	}
 	
@@ -101,7 +101,7 @@ public class LoginController implements Initializable {
 			
 			stage.setOnHiding(we -> {
 				Platform.runLater(() -> {
-					client.send(new Message("server", ClientMain.getLoginController().getClient().getUsername(), "logout", ""));
+					client.send(new Message("com/josephndavis/chattykathy/server", ClientMain.getLoginController().getClient().getUsername(), "logout", ""));
 					System.exit(0);
 				});
 			});

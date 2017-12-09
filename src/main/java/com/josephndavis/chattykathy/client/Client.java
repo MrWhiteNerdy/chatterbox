@@ -1,6 +1,6 @@
 package com.josephndavis.chattykathy.client;
 
-import server.Message;
+import com.josephndavis.chattykathy.server.Message;
 import javafx.application.Platform;
 
 import java.io.IOException;

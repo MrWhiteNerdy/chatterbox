@@ -1,4 +1,4 @@
-package server;
+package com.josephndavis.chattykathy.server;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
