@@ -1,4 +1,4 @@
-# Chat App
+# Chatterbox
 
 ## Overview
 
