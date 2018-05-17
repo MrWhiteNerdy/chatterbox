@@ -1,4 +1,4 @@
-package com.josephndavis.chattykathy.server;
+package com.josephndavis.chatterbox.server;
 
 import javafx.application.Application;
 import javafx.application.Platform;

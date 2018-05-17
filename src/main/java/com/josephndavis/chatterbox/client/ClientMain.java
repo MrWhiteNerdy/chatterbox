@@ -1,8 +1,8 @@
-package com.josephndavis.chattykathy.client;
+package com.josephndavis.chatterbox.client;
 
-import com.josephndavis.chattykathy.client.controllers.ChatController;
-import com.josephndavis.chattykathy.client.controllers.HistoryController;
-import com.josephndavis.chattykathy.client.controllers.LoginController;
+import com.josephndavis.chatterbox.client.controllers.ChatController;
+import com.josephndavis.chatterbox.client.controllers.HistoryController;
+import com.josephndavis.chatterbox.client.controllers.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
